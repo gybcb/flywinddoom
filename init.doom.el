@@ -27,6 +27,10 @@
 ;;
 ;;; License: MIT
 
+(setq package-archives
+      '(("gnu" . "http://elpa.emacs-china.org/gnu/")
+        ("melpa" . "http://elpa.emacs-china.org/melpa")))
+
 (require 'core (concat user-emacs-directory "core/core"))
 
 (doom! :feature

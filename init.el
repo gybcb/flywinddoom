@@ -8,9 +8,9 @@
   (setq +org-dir "~/flywind-nas/gtd")
   (setq org-agenda-files '("~/flywind-nas/gtd/work.org"))
 
-  (setq org-todo-keywords '((sequence "TODO(t!)" "NEXT(n)" "WAITTING(w)" "SOMEDAYS(s)" "已安排(e)" "|" "DONE(d@/!)" "ABORT(a@/!)")))
-  (setq org-todo-keyword-faces
-        '(("TODO" . "orange") ("NEXT" . "green") ("DONE" . "blue")))
+  ;; (setq org-todo-keywords '((sequence "TODO(t!)" "NEXT(n)" "WAITTING(w)" "SOMEDAYS(s)" "已安排(e)" "|" "DONE(d@/!)" "ABORT(a@/!)")))
+  ;; (setq org-todo-keyword-faces
+  ;;       '(("TODO" . "orange") ("NEXT" . "green") ("DONE" . "blue")))
   (setq org-directory "~/flywind-nas/org")
   ;; (setq org-default-notes-file (concat org-directory "/gtd.org"))
   (setq org-capture-templates
