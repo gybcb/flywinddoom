@@ -1,8 +1,19 @@
+;;; private/flywind/init.el -*- lexical-binding: t; -*-
+
+(setq doom-font (font-spec :family "Inconsolata for Powerline" :size 13)
+)
+
+
 (def-package-hook! company
   :post-config
   ;; these are the defaults (before I changed them)
   (setq company-idle-delay 0.2
         company-minimum-prefix-length 3))
+
+(def-package! company-childframe
+  :after company
+  :config
+  (company-childframe-mode 1))
 
 (after! org
   (setq +org-dir "~/flywind-nas/gtd")
@@ -27,5 +38,11 @@
           )
         )
 )
+
+;; (def-package! minimal-theme
+;;   :config
+;;   (unless doom-theme
+;;     (setq doom-theme 'minimal-light))
+;; )
 
 ;; (global-company-mode)
