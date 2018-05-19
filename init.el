@@ -42,7 +42,7 @@
        spellcheck        ; tasing you for misspelling mispelling
        syntax-checker    ; tasing you for every semicolon you forget
        version-control   ; remember, remember that commit in November
-       workspaces        ; tab emulation, persistence & separate workspaces
+       ;; workspaces        ; tab emulation, persistence & separate workspaces
 
        :completion
        company           ; the ultimate code completion backend
@@ -54,10 +54,10 @@
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-modeline     ; a snazzy Atom-inspired mode-line
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;; doom-quit         ; DOOM quit-message prompts when you quit Emacs
        hl-todo           ; highlight TODO/FIXME/NOTE tags
        nav-flash         ; blink the current line after jumping
-       evil-goggles      ; display visual hints when editing in evil
+       ;evil-goggles      ; display visual hints when editing in evil
        unicode           ; extended unicode support for various languages
       ;tabbar            ; FIXME an (incomplete) tab bar for Emacs
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
@@ -67,9 +67,9 @@
        dired             ; making dired pretty [functional]
        electric-indent   ; smarter, keyword-based electric-indent
        eshell            ; a consistent, cross-platform shell (WIP)
-       gist              ; interacting with github gists
+       ;; gist              ; interacting with github gists
        imenu             ; an imenu sidebar and searchable code index
-       impatient-mode    ; show off code over HTTP
+       ;; impatient-mode    ; show off code over HTTP
        macos             ; MacOS-specific commands
        make              ; run make tasks from Emacs
        neotree           ; a project drawer, like NERDTree for vim
@@ -77,11 +77,12 @@
        rotate-text       ; cycle region at point between text candidates
        term              ; terminals in Emacs
        tmux              ; an API for interacting with tmux
-       upload            ; map local to remote projects via ssh/ftp
+       ;; upload            ; map local to remote projects via ssh/ftp
+       magit
 
        :lang
        ;assembly          ; assembly for fun or debugging
-       cc                ; C/C++/Obj-C madness
+       ;; cc                ; C/C++/Obj-C madness
        ;crystal           ; ruby at the speed of c
        ;clojure           ; java with a lisp
        ;csharp            ; unity, .NET, and mono shenanigans
