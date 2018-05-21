@@ -29,34 +29,45 @@
 
 (setq package-archives
       '(("gnu" . "http://elpa.emacs-china.org/gnu/")
-        ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+        ("melpa" . "http://elpa.emacs-china.org/melpa/")
+        ("org"   . "http://elpa.emacs-china.org/org/")
+))
 
 (doom! :feature
       ;debugger          ; FIXME stepping through code, to help you add bugs
        eval              ; run code, run (also, repls)
        ;evil              ; come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
-       jump              ; helping you get around
-       services          ; TODO managing external services & code builders
+       (lookup           ; helps you navigate your code and documentation
+        +devdocs         ; ...on devdocs.io online
+        +docsets)        ; ...or in Dash docsets locally
        snippets          ; my elves. They type so I don't have to
        spellcheck        ; tasing you for misspelling mispelling
-       syntax-checker    ; tasing you for every semicolon you forget
+       (syntax-checker   ; tasing you for every semicolon you forget
+        +childframe)     ; use childframes for error popups (Emacs 26+ only)
        version-control   ; remember, remember that commit in November
        ;; workspaces        ; tab emulation, persistence & separate workspaces
 
        :completion
-       company           ; the ultimate code completion backend
-       ivy               ; a search engine for love and life
+       (company          ; the ultimate code completion backend
+        +auto            ; as-you-type code completion
+        +childframe)     ; a nicer company UI (Emacs 26+ only)
+       (ivy              ; a search engine for love and life
+        +childframe)     ; uses childframes for popups (Emacs 26+ only)
       ;helm              ; the *other* search engine for love and life
       ;ido               ; the other *other* search engine...
 
        :ui
+       ;; (popup            ; tame sudden yet inevitable temporary windows
+       ;;  +all             ; catch all popups that start with an asterix
+       ;;  +defaults)       ; default popup rules
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-modeline     ; a snazzy Atom-inspired mode-line
        ;; doom-quit         ; DOOM quit-message prompts when you quit Emacs
        hl-todo           ; highlight TODO/FIXME/NOTE tags
        nav-flash         ; blink the current line after jumping
+       neotree           ; a project drawer, like NERDTree for vim
        ;evil-goggles      ; display visual hints when editing in evil
        unicode           ; extended unicode support for various languages
       ;tabbar            ; FIXME an (incomplete) tab bar for Emacs
@@ -65,6 +76,8 @@
 
        :tools
        dired             ; making dired pretty [functional]
+       editorconfig      ; let someone else argue about tabs vs spaces
+       ein               ; tame Jupyter notebooks with emacs
        electric-indent   ; smarter, keyword-based electric-indent
        eshell            ; a consistent, cross-platform shell (WIP)
        ;; gist              ; interacting with github gists
@@ -72,7 +85,6 @@
        ;; impatient-mode    ; show off code over HTTP
        macos             ; MacOS-specific commands
        make              ; run make tasks from Emacs
-       neotree           ; a project drawer, like NERDTree for vim
        password-store    ; password manager for nerds
        rotate-text       ; cycle region at point between text candidates
        term              ; terminals in Emacs
@@ -138,9 +150,21 @@
        ;; the defaults module. It contains a Spacemacs-inspired keybinding
        ;; scheme and additional ex commands for evil-mode. Use it as a reference
        ;; for your own.
-       :private
+       ;:private
        ;default
-       flywind
+       ;flywind
+
+             :collab
+      ;impatient-mode    ; show off code over HTTP
+
+       :config
+       ;; The default module set reasonable defaults for Emacs. It also provides
+       ;; a Spacemacs-inspired keybinding scheme, a custom yasnippet library,
+       ;; and additional ex commands for evil-mode. Use it as a reference for
+       ;; your own modules.
+       ;; (default +bindings +snippets +evil-commands)
+       (default +bindings +snippets)
+
        )
 
 (setq doom-font (font-spec :family "Droid Sans Mono Slashed for Powerline" :size 14))
@@ -188,5 +212,7 @@
 ;;   (unless doom-theme
 ;;     (setq doom-theme 'doom-molokai))
 ;; )
-
-(setq doom-theme 'doom-nord-light)
+(if window-system
+    (setq doom-theme 'doom-nord-light)
+  (setq doom-theme 'doom-one)
+  )
