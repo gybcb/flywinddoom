@@ -2,8 +2,8 @@
   :init
   (def-package! lsp-ui
     :after lsp-mode
-    :init
-    (add-hook 'lsp-after-open-hook #'lsp-ui-mode))
+    :config
+    (add-hook 'lsp-mode-hook #'lsp-ui-mode))
 
   (def-package! lsp-intellij
     :after lsp-mode
@@ -14,9 +14,9 @@
     :after lsp-mode
     :when (featurep! :complete company)
     :init
-    (setq company-lsp-enable-snippet t
-          company-lsp-cache-candidates t)
-    (push 'company-lsp company-backends)
-    (push 'java-mode company-global-modes)
+    (setq company-transformers nil
+          company-lsp-async t
+          company-lsp-cache-candidates nil)
+    (set! :company-backend 'java-mode '(company-lsp))
     )
   )
