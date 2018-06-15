@@ -44,16 +44,19 @@
        snippets          ; my elves. They type so I don't have to
        spellcheck        ; tasing you for misspelling mispelling
        (syntax-checker   ; tasing you for every semicolon you forget
-        +childframe)     ; use childframes for error popups (Emacs 26+ only)
+        ;; +childframe
+        )     ; use childframes for error popups (Emacs 26+ only)
        version-control   ; remember, remember that commit in November
        ;; workspaces        ; tab emulation, persistence & separate workspaces
 
        :completion
        (company          ; the ultimate code completion backend
         +auto            ; as-you-type code completion
-        +childframe)     ; a nicer company UI (Emacs 26+ only)
-       (ivy              ; a search engine for love and life
-        +childframe)     ; uses childframes for popups (Emacs 26+ only)
+        ;; +childframe
+        )     ; a nicer company UI (Emacs 26+ only)
+       ;; (ivy              ; a search engine for love and life
+       ;;  +childframe)     ; uses childframes for popups (Emacs 26+ only)
+       ivy
       ;helm              ; the *other* search engine for love and life
       ;ido               ; the other *other* search engine...
 
@@ -74,20 +77,22 @@
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        (window-select +ace-window)  ; visually switch windows
 
-       :tools
+       :emacs
        dired             ; making dired pretty [functional]
+       eshell            ; a consistent, cross-platform shell (WIP)
+       electric-indent   ; smarter, keyword-based electric-indent
+       imenu             ; an imenu sidebar and searchable code index
+       term              ; terminals in Emacs
+
+       :tools
        editorconfig      ; let someone else argue about tabs vs spaces
        ein               ; tame Jupyter notebooks with emacs
-       electric-indent   ; smarter, keyword-based electric-indent
-       eshell            ; a consistent, cross-platform shell (WIP)
        ;; gist              ; interacting with github gists
-       imenu             ; an imenu sidebar and searchable code index
        ;; impatient-mode    ; show off code over HTTP
        macos             ; MacOS-specific commands
        make              ; run make tasks from Emacs
        password-store    ; password manager for nerds
        rotate-text       ; cycle region at point between text candidates
-       term              ; terminals in Emacs
        tmux              ; an API for interacting with tmux
        ;; upload            ; map local to remote projects via ssh/ftp
        magit
@@ -133,7 +138,7 @@
        ;scala             ; java, but good
        sh                ; she sells (ba|z)sh shells on the C xor
        ;swift             ; who asked for emoji variables?
-       typescript        ; javascript, but better
+       ;; typescript        ; javascript, but better
        web               ; the tubes
        ;java-intellij-lsp
 
@@ -169,8 +174,8 @@
 
        )
 
-(setq doom-font (font-spec :family "Droid Sans Mono Slashed for Powerline" :size 14))
-(setq doom-unicode-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 16))
+(setq doom-font (font-spec :family "Droid Sans Mono for Powerline" :size 12))
+(setq doom-unicode-font (font-spec :family "WenQuanYi Micro Hei Mono" :size 14))
 
 ;; (setq doom-leader-key "C-M-,")
 
@@ -215,6 +220,11 @@
 ;;     (setq doom-theme 'doom-molokai))
 ;; )
 (if window-system
-    (setq doom-theme 'doom-nord-light)
+;;    (setq doom-theme 'doom-nord-light)
+    (setq doom-theme 'doom-one)
   (setq doom-theme 'doom-one)
   )
+
+(cond (IS-MAC
+       (setq mac-option-modifier 'meta)
+       ))
